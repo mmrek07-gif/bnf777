@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriEdu AI Suite v2.0</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3067/3067256.png">
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="background-animation">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <!-- Главный контейнер -->
+    <div class="glass-container">
+        <!-- Заголовок -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-seedling"></i>
+                <h1>AgriEdu <span class="ai-text">AI</span> Suite</h1>
+            </div>
+            <p class="subtitle">Интеллектуальная платформа для умного сельского хозяйства</p>
+            <div class="version-badge">v2.0</div>
+        </header>
+
+        <!-- Статус системы -->
+        <div class="status-board">
+            <h2><i class="fas fa-heartbeat"></i> Статус системы</h2>
+            <div class="status-grid">
+                <div class="status-card online">
+                    <i class="fas fa-server"></i>
+                    <h3>Backend API</h3>
+                    <p id="backend-status">Проверка...</p>
+                    <div class="status-indicator"></div>
+                </div>
+                <div class="status-card online">
+                    <i class="fas fa-desktop"></i>
+                    <h3>Frontend</h3>
+                    <p>Работает</p>
+                    <div class="status-indicator"></div>
+                </div>
+                <div class="status-card online">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI Модель</h3>
+                    <p>Активна</p>
+                    <div class="status-indicator"></div>
+                </div>
+                <div class="status-card online">
+                    <i class="fas fa-database"></i>
+                    <h3>База данных</h3>
+                    <p>Готова</p>
+                    <div class="status-indicator"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Основные функции -->
+        <div class="features">
+            <h2><i class="fas fa-star"></i> Возможности</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: #4CAF50;">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Диагностика растений</h3>
+                    <p>Определение болезней по фотографии с точностью 95%</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: #2196F3;">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Анализ урожайности</h3>
+                    <p>Прогнозирование и оптимизация сельхоз показателей</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: #FF9800;">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Рекомендации</h3>
+                    <p>Персонализированные советы по уходу за культурами</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: #9C27B0;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Мобильный доступ</h3>
+                    <p>Работа с любого устройства в поле или лаборатории</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Панель быстрого доступа -->
+        <div class="quick-access">
+            <h2><i class="fas fa-bolt"></i> Быстрый доступ</h2>
+            <div class="buttons-grid">
+                <a href="http://localhost:8000/api/docs" class="action-btn primary" target="_blank">
+                    <i class="fas fa-book"></i>
+                    <span>API Документация</span>
+                </a>
+                <a href="http://localhost:8000/api/redoc" class="action-btn" target="_blank">
+                    <i class="fas fa-file-alt"></i>
+                    <span>ReDoc</span>
+                </a>
+                <a href="http://localhost:8000" class="action-btn" target="_blank">
+                    <i class="fas fa-code"></i>
+                    <span>Backend API</span>
+                </a>
+                <a href="http://localhost:8000/api/health" class="action-btn" target="_blank">
+                    <i class="fas fa-heart"></i>
+                    <span>Health Check</span>
+                </a>
+                <a href="https://kthi.mlg.expert" class="action-btn" target="_blank">
+                    <i class="fas fa-university"></i>
+                    <span>KTHI</span>
+                </a>
+                <a href="https://knu.kg" class="action-btn" target="_blank">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>КНУ</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Информационная панель -->
+        <div class="info-panel">
+            <div class="info-card">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <h4>Время работы</h4>
+                    <p id="uptime">Загружается...</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-calendar"></i>
+                <div>
+                    <h4>Текущая дата</h4>
+                    <p id="current-date"></p>
+                </div>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-users"></i>
+                <div>
+                    <h4>Пользователи</h4>
+                    <p id="user-count">12 активных</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Футер -->
+        <footer class="footer">
+            <p>© 2026 AgriEdu AI Suite | Технологии для устойчивого сельского хозяйства</p>
+            <p>Разработано при поддержке <strong>KTHI</strong> & <strong>КНУ им. Ж. Баласагына</strong></p>
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fas fa-book"></i> Документация</a>
+                <a href="#"><i class="fas fa-envelope"></i> Контакты</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Подключаем скрипты -->
+    <script src="script.js"></script>
+</body>
+</html>

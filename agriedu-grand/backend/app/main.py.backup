@@ -1,0 +1,128 @@
+﻿from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import JSONResponse, HTMLResponse
+import uvicorn
+import os
+from datetime import datetime
+
+from app.api.endpoints import router as api_router
+from app.ml.plant_disease import PlantDiseaseModel
+
+# Инициализация приложения
+app = FastAPI(
+    title="🌱 AgriEdu AI Suite v2.0",
+    description="""
+    ## 🚀 Мощный искусственный интеллект для сельского хозяйства
+    
+    **Возможности:**
+    - 🍃 Распознавание болезней растений
+    - 📊 Анализ урожайности
+    - 💡 Рекомендации по уходу
+    - 📈 Прогнозирование роста
+    
+    **Технологии:**
+    - FastAPI + Python 3.11
+    - Компьютерное зрение
+    - Машинное обучение
+    """,
+    version="2.0.0",
+    docs_url="/api/docs",
+    redoc_url="/api/redoc",
+    contact={
+        "name": "AgriEdu Team",
+        "url": "https://kthi.mlg.expert",
+        "email": "support@agriedu.kg",
+    },
+    license_info={
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+    },
+    swagger_ui_parameters={
+        "syntaxHighlight.theme": "monokai",  # Стильная тёмная подсветка
+        "defaultModelsExpandDepth": -1,
+        "displayRequestDuration": True,
+        "filter": True,
+        "tryItOutEnabled": True,
+        "persistAuthorization": True,
+        "docExpansion": "list",
+        "operationsSorter": "method",
+        "tagsSorter": "alpha",
+        "showExtensions": True,
+        "showCommonExtensions": True,
+        "displayOperationId": True,
+        "deepLinking": True,
+    }
+)
+
+# Настройка CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Подключение маршрутов
+app.include_router(api_router, prefix="/api/v1")
+
+# Инициализация ИИ модели
+plant_model = PlantDiseaseModel()
+
+# Маршруты
+@app.get("/", response_class=HTMLResponse)
+async def root():
+    return """
+    <html>
+        <head>
+            <title>AgriEdu AI Suite API</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 40px; text-align: center; }
+                h1 { color: #2e7d32; }
+                .box { background: #f1f8e9; padding: 20px; border-radius: 10px; display: inline-block; }
+            </style>
+        </head>
+        <body>
+            <div class="box">
+                <h1>🌱 AgriEdu AI Suite API</h1>
+                <p>🚀 Backend успешно запущен!</p>
+                <p>📚 Документация: <a href="/api/docs">/api/docs</a></p>
+                <p>👨‍💻 Разработка: Хакатон "Забе-технологии"</p>
+            </div>
+        </body>
+    </html>
+    """
+
+@app.get("/api/health")
+async def health_check():
+    return {
+        "status": "healthy",
+        "service": "AgriEdu AI Suite",
+        "version": "2.0",
+        "timestamp": datetime.now().isoformat(),
+        "ai_model_loaded": plant_model.is_ready()
+    }
+
+# Запуск приложения
+if __name__ == "__main__":
+    print("""
+    ╔══════════════════════════════════════╗
+    ║      🌱 AGRIEDU AI SUITE v2.0       ║
+    ║    ИИ для образования и сельского    ║
+    ╚══════════════════════════════════════╝
+    
+    🚀 Запуск сервера...
+    📡 API: http://localhost:8000
+    📚 Docs: http://localhost:8000/api/docs
+    🌐 Frontend: http://localhost:5500
+    
+    """)
+    
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=8000,
+        reload=True,
+        log_level="info"
+    )
