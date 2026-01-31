@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEOAGRO — AI для сельского хозяйства</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
+</head>
+<body>
+    <!-- Левая панель -->
+    <div class="sidebar">
+        <!-- Языковой переключатель -->
+        <div class="language-switcher">
+            <button class="lang-btn active" data-lang="ru">
+                <span class="fi fi-ru"></span> RU
+            </button>
+            <button class="lang-btn" data-lang="kg">
+                <span class="fi fi-kg"></span> KG
+            </button>
+            <button class="lang-btn" data-lang="ko">
+                <span class="fi fi-kr"></span> KO
+            </button>
+        </div>
+        
+        <!-- Логотип -->
+        <div class="logo-section">
+            <div class="logo">
+                <div class="logo-icon">🌿</div>
+                <div class="logo-text" data-i18n="title">NEOAGRO</div>
+            </div>
+            <p class="tagline" data-i18n="tagline">Искусственный интеллект для сельского хозяйства</p>
+        </div>
+        
+        <!-- Навигация -->
+        <nav class="main-nav">
+            <a href="#" class="nav-item active" data-i18n="nav.home">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Главная</span>
+            </a>
+            <a href="#" class="nav-item" data-i18n="nav.technologies">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Технологии</span>
+            </a>
+            <a href="#" class="nav-item" data-i18n="nav.howitworks">
+                <span class="nav-icon">🔍</span>
+                <span class="nav-text">Как работает</span>
+            </a>
+            <a href="#" class="nav-item" data-i18n="nav.demo">
+                <span class="nav-icon">🎬</span>
+                <span class="nav-text">Демо</span>
+            </a>
+            <a href="#" class="nav-item" data-i18n="nav.team">
+                <span class="nav-icon">👥</span>
+                <span class="nav-text">Команда</span>
+            </a>
+            <a href="#" class="nav-item cta-button" data-i18n="nav.launch">
+                <span class="nav-icon">🚀</span>
+                <span class="nav-text">СМОТРЕТЬ СЛИВ ЖАКУ И РУФАШИ</span>
+            </a>
+        </nav>
+        
+        <!-- Карточка эксперта -->
+        <div class="expert-card">
+            <div class="expert-badge" data-i18n="expert.recommended">Рекомендуем</div>
+            <div class="expert-header">
+                <h3 data-i18n="expert.title">Эксперт дня</h3>
+            </div>
+            <div class="expert-profile">
+                <div class="expert-avatar">👩‍🔬</div>
+                <div class="expert-info">
+                    <h4 data-i18n="expert.name">КОЧИ"КОТ"</h4>
+                    <p class="expert-specialty" data-i18n="expert.specialty">Эксперт по грибковым заболеваниям</p>
+                    <div class="expert-rating">
+                        ★★★★★
+                        <span class="rating-score">4.7/5</span>
+                    </div>
+                </div>
+            </div>
+            <button class="contact-button" data-i18n="expert.contact">
+                📞 Связаться с экспертом
+            </button>
+        </div>
+        
+        <!-- Карточка конкурса -->
+        <div class="contest-card">
+            <div class="contest-badge" data-i18n="contest.participate">Участвуйте</div>
+            <h4 data-i18n="contest.title">Конкурс "БИЛИМ БЕРУ"</h4>
+            <p data-i18n="contest.description">Проект по развитию ИИ в образовании и сельском хозяйстве</p>
+            <button class="contest-button" data-i18n="contest.learnmore">Узнать больше →</button>
+        </div>
+        
+        <!-- Футер -->
+        <div class="sidebar-footer">
+            <p class="vision-text" data-i18n="footer.vision">Переосмысливая будущее сельского хозяйства через искусственный интеллект</p>
+            <div class="tech-tags">
+                <span class="tag">TensorFlow</span>
+                <span class="tag">Python</span>
+                <span class="tag">AI</span>
+                <span class="tag" data-i18n="footer.agro">Агро</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Основной контент (правая часть) -->
+    <div class="main-content">
+        <h1 class="main-title" data-i18n="main.title">Будущее сельского хозяйства начинается здесь</h1>
+        <p class="main-subtitle" data-i18n="main.subtitle">ИИ-платформа для анализа, прогнозирования и оптимизации сельскохозяйственных процессов</p>
+        
+        <div class="tech-grid">
+            <div class="tech-item">
+                <h3 data-i18n="tech.data">📊 Анализ данных</h3>
+                <p data-i18n="tech.data_desc">Сбор и обработка данных с датчиков, дронов и спутников в реальном времени</p>
+            </div>
+            <div class="tech-item">
+                <h3 data-i18n="tech.climate">🌡️ Управление климатом</h3>
+                <p data-i18n="tech.climate_desc">Интеллектуальное регулирование микроклимата в теплицах и хранилищах</p>
+            </div>
+            <div class="tech-item">
+                <h3 data-i18n="tech.harvest">📈 Прогноз урожая</h3>
+                <p data-i18n="tech.harvest_desc">Точное прогнозирование урожайности с учетом множества факторов</p>
+            </div>
+            <div class="tech-item">
+                <h3 data-i18n="tech.diagnosis">🤖 Диагностика болезней</h3>
+                <p data-i18n="tech.diagnosis_desc">Автоматическое определение заболеваний растений по изображениям</p>
+            </div>
+        </div>
+        
+        <!-- Блок команды -->
+        <div class="team-section">
+            <h2 data-i18n="team.title">07 НАЕБЩИКИ</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">🧠</div>
+                    <h4 data-i18n="team.alexey.name">БАЙСАЛ"КОТ"</h4>
+                    <p class="member-role" data-i18n="team.alexey.role">Lead AI Developer</p>
+                    <p class="member-desc" data-i18n="team.alexey.desc">Создает нейросети, которые понимают язык растений</p>
+                    <div class="member-skills">
+                        <span class="skill">TensorFlow</span>
+                        <span class="skill">Python</span>
+                        <span class="skill">PyTorch</span>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">🎨</div>
+                    <h4 data-i18n="team.anastasia.name">ДИАС "КОТ"</h4>
+                    <p class="member-role" data-i18n="team.anastasia.role">UX/UI Designer</p>
+                    <p class="member-desc" data-i18n="team.anastasia.desc">Превращает сложные алгоритмы в интуитивные интерфейсы</p>
+                    <div class="member-skills">
+                        <span class="skill">Figma</span>
+                        <span class="skill">Blender</span>
+                        <span class="skill">After Effects</span>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">🌱</div>
+                    <h4 data-i18n="team.mark.name">ЖАКУ "КЫЗ СИГЕР"</h4>
+                    <p class="member-role" data-i18n="team.mark.role">Agricultural Expert</p>
+                    <p class="member-desc" data-i18n="team.mark.desc">Знает все болезни растений и как их лечить</p>
+                    <div class="member-skills">
+                        <span class="skill" data-i18n="team.mark.skill1">Биология</span>
+                        <span class="skill" data-i18n="team.mark.skill2">Химия</span>
+                        <span class="skill" data-i18n="team.mark.skill3">Генетика</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="i18n.js"></script>
+</body>
+</html>
