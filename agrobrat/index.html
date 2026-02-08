@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ru" id="html-lang">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌾 СельхозУчет - Умная ферма</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="logo" onclick="app.showPage('home-page')" style="cursor: pointer;">
+                <i class="fas fa-tractor logo-icon"></i>
+                <div class="logo-text">
+                    <h1 class="logo-title" id="app-title">СельхозУчет</h1>
+                    <p class="logo-subtitle" id="app-subtitle">Умная ферма</p>
+                </div>
+            </div>
+            
+            <button class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav" id="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#home" data-page="home" class="nav-link active"><i class="fas fa-home"></i> <span data-i18n="nav.home">Главная</span></a></li>
+                    <li><a href="#fields" data-page="fields" class="nav-link"><i class="fas fa-seedling"></i> <span data-i18n="nav.fields">Поля</span></a></li>
+                    <li><a href="#animals" data-page="animals" class="nav-link"><i class="fas fa-cow"></i> <span data-i18n="nav.animals">Животные</span></a></li>
+                    <li><a href="#greenhouses" data-page="greenhouses" class="nav-link"><i class="fas fa-temperature-high"></i> <span data-i18n="nav.greenhouses">Теплицы</span></a></li>
+                    <li><a href="#weather" data-page="weather" class="nav-link"><i class="fas fa-cloud-sun"></i> <span data-i18n="nav.weather">Погода</span></a></li>
+                    <li><a href="#ai" data-page="ai" class="nav-link"><i class="fas fa-robot"></i> <span data-i18n="nav.ai">ИИ-Помощник</span></a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-controls">
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="ru" title="Русский">
+                        <i class="fas fa-language"></i> RU
+                    </button>
+                    <button class="lang-btn" data-lang="kg" title="Кыргызча">
+                        <i class="fas fa-language"></i> KG
+                    </button>
+                    <button class="lang-btn" data-lang="ko" title="한국어">
+                        <i class="fas fa-language"></i> KO
+                    </button>
+                </div>
+                
+                <div class="user-menu">
+                    <button class="user-btn" id="user-menu-btn">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <h3>Меню</h3>
+            <button class="close-menu" id="close-menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#home" data-page="home" class="mobile-nav-link active"><i class="fas fa-home"></i> <span data-i18n="nav.home">Главная</span></a></li>
+            <li><a href="#fields" data-page="fields" class="mobile-nav-link"><i class="fas fa-seedling"></i> <span data-i18n="nav.fields">Поля</span></a></li>
+            <li><a href="#animals" data-page="animals" class="mobile-nav-link"><i class="fas fa-cow"></i> <span data-i18n="nav.animals">Животные</span></a></li>
+            <li><a href="#greenhouses" data-page="greenhouses" class="mobile-nav-link"><i class="fas fa-temperature-high"></i> <span data-i18n="nav.greenhouses">Теплицы</span></a></li>
+            <li><a href="#weather" data-page="weather" class="mobile-nav-link"><i class="fas fa-cloud-sun"></i> <span data-i18n="nav.weather">Погода</span></a></li>
+            <li><a href="#ai" data-page="ai" class="mobile-nav-link"><i class="fas fa-robot"></i> <span data-i18n="nav.ai">ИИ-Помощник</span></a></li>
+        </ul>
+    </div>
+
+    <!-- Основной контент -->
+    <main class="main">
+        <!-- Главная страница -->
+        <section id="home-page" class="page active animate__animated animate__fadeIn">
+            <div class="container">
+                <div class="welcome-section">
+                    <div class="welcome-card">
+                        <h2 class="welcome-title" data-i18n="home.welcome">Добро пожаловать в систему учета</h2>
+                        <p class="welcome-text" data-i18n="home.description">Управляйте полями, животными и теплицами. Следите за прибылью и расходами с помощью ИИ помощника.</p>
+                        
+                        <div class="welcome-stats">
+                            <div class="stat-card" data-aos="fade-up">
+                                <div class="stat-icon">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <h3 data-i18n="home.fields">Поля</h3>
+                                <p class="stat-count" id="field-count">0</p>
+                            </div>
+                            <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                                <div class="stat-icon">
+                                    <i class="fas fa-cow"></i>
+                                </div>
+                                <h3 data-i18n="home.animals">Животные</h3>
+                                <p class="stat-count" id="animal-count">0</p>
+                            </div>
+                            <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                                <div class="stat-icon">
+                                    <i class="fas fa-temperature-high"></i>
+                                </div>
+                                <h3 data-i18n="home.greenhouses">Теплицы</h3>
+                                <p class="stat-count" id="greenhouse-count">0</p>
+                            </div>
+                            <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                                <div class="stat-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3 data-i18n="home.profit">Прибыль</h3>
+                                <p class="stat-count" id="total-profit">0 ₽</p>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-actions">
+                            <h3 data-i18n="home.quickActions">Быстрые действия</h3>
+                            <div class="action-buttons">
+                                <button class="action-btn primary" id="quick-add-field">
+                                    <i class="fas fa-plus"></i>
+                                    <span data-i18n="home.addField">Добавить поле</span>
+                                </button>
+                                <button class="action-btn secondary" id="quick-add-animal">
+                                    <i class="fas fa-plus"></i>
+                                    <span data-i18n="home.addAnimal">Добавить животное</span>
+                                </button>
+                                <button class="action-btn tertiary" id="quick-add-greenhouse">
+                                    <i class="fas fa-plus"></i>
+                                    <span data-i18n="home.addGreenhouse">Добавить теплицу</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-activity">
+                        <h3 data-i18n="home.recentActivity">Недавняя активность</h3>
+                        <div class="activity-list" id="recent-activity">
+                            <div class="activity-item">
+                                <i class="fas fa-info-circle"></i>
+                                <p data-i18n="home.noActivity">Нет недавней активности</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница полей -->
+        <section id="fields-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h2 data-i18n="fields.title">Управление полями</h2>
+                    <button class="btn btn-primary" id="add-field">
+                        <i class="fas fa-plus"></i>
+                        <span data-i18n="fields.addButton">Добавить поле</span>
+                    </button>
+                </div>
+                
+                <div class="fields-list" id="fields-list">
+                    <!-- Поля будут загружены динамически -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница деталей поля -->
+        <section id="field-detail-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="btn btn-back" id="back-from-field">
+                        <i class="fas fa-arrow-left"></i>
+                        <span data-i18n="common.back">Назад</span>
+                    </button>
+                    <h2 data-i18n="fields.detailTitle">Детали поля</h2>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <div class="field-info">
+                            <h3 id="field-name-display">Название поля</h3>
+                            <div class="field-meta">
+                                <span class="field-meta-item">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span data-i18n="fields.area">Площадь:</span> <span id="field-area-display">0</span> га
+                                </span>
+                                <span class="field-meta-item">
+                                    <i class="fas fa-seedling"></i>
+                                    <span data-i18n="fields.crop">Культура:</span> <span id="field-crop-display">-</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="field-actions">
+                            <button class="btn btn-small" id="edit-field">
+                                <i class="fas fa-edit"></i>
+                                <span data-i18n="common.edit">Редактировать</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-card">
+                        <h3 data-i18n="fields.calculator">Калькулятор посева</h3>
+                        <div class="calculator-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="seed-rate" data-i18n="fields.seedRate">Норма высева (кг/га)</label>
+                                    <input type="number" id="seed-rate" value="200" min="1" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="seed-price" data-i18n="fields.seedPrice">Стоимость семян (руб/кг)</label>
+                                    <input type="number" id="seed-price" value="50" min="1" class="form-input">
+                                </div>
+                            </div>
+                            
+                            <div class="calculator-results">
+                                <div class="result-item">
+                                    <span data-i18n="fields.seedNeeded">Необходимо семян:</span>
+                                    <strong id="seed-amount">0 кг</strong>
+                                </div>
+                                <div class="result-item">
+                                    <span data-i18n="fields.totalCost">Общая стоимость:</span>
+                                    <strong id="seed-total-cost">0 руб</strong>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-success" id="add-seed-cost">
+                                <i class="fas fa-plus"></i>
+                                <span data-i18n="fields.addToExpenses">Добавить в расходы</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="expenses">
+                            <i class="fas fa-list"></i>
+                            <span data-i18n="common.expenses">Расходы</span>
+                        </button>
+                        <button class="tab-btn" data-tab="harvest">
+                            <i class="fas fa-wheat"></i>
+                            <span data-i18n="fields.harvest">Урожай</span>
+                        </button>
+                        <button class="tab-btn" data-tab="notes">
+                            <i class="fas fa-sticky-note"></i>
+                            <span data-i18n="common.notes">Заметки</span>
+                        </button>
+                    </div>
+                    
+                    <div class="tab-content active" id="expenses-content">
+                        <div class="section-header">
+                            <h3 data-i18n="fields.expensesJournal">Журнал расходов</h3>
+                            <button class="btn btn-primary" id="add-expense">
+                                <i class="fas fa-plus"></i>
+                                <span data-i18n="common.addExpense">Добавить расход</span>
+                            </button>
+                        </div>
+                        <div class="expenses-list" id="field-expenses">
+                            <!-- Расходы будут загружены динамически -->
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="harvest-content">
+                        <div class="section-header">
+                            <h3 data-i18n="fields.harvestAccounting">Учет урожая</h3>
+                            <button class="btn btn-primary" id="add-harvest">
+                                <i class="fas fa-plus"></i>
+                                <span data-i18n="fields.addHarvest">Добавить урожай</span>
+                            </button>
+                        </div>
+                        <div class="harvest-list" id="field-harvest">
+                            <!-- Урожай будет загружен динамически -->
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="notes-content">
+                        <div class="section-header">
+                            <h3 data-i18n="common.notes">Заметки</h3>
+                            <button class="btn btn-primary" id="add-note">
+                                <i class="fas fa-plus"></i>
+                                <span data-i18n="common.addNote">Добавить заметку</span>
+                            </button>
+                        </div>
+                        <div class="notes-list" id="field-notes">
+                            <!-- Заметки будут загружены динамически -->
+                        </div>
+                    </div>
+                    
+                    <div class="summary-card">
+                        <h3 data-i18n="common.summary">Итоги</h3>
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <h4 data-i18n="common.totalExpenses">Общие расходы</h4>
+                                <p class="amount expense" id="field-total-expenses">0 руб</p>
+                            </div>
+                            <div class="summary-item">
+                                <h4 data-i18n="common.totalIncome">Общий доход</h4>
+                                <p class="amount income" id="field-total-income">0 руб</p>
+                            </div>
+                            <div class="summary-item">
+                                <h4 data-i18n="common.profitLoss">Прибыль/убыток</h4>
+                                <p class="amount" id="field-total-profit">0 руб</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница животных -->
+        <section id="animals-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h2 data-i18n="animals.title">Управление животными</h2>
+                    <button class="btn btn-primary" id="add-animal">
+                        <i class="fas fa-plus"></i>
+                        <span data-i18n="animals.addButton">Добавить животное</span>
+                    </button>
+                </div>
+                
+                <div class="animals-list" id="animals-list">
+                    <!-- Животные будут загружены динамически -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница теплиц -->
+        <section id="greenhouses-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h2 data-i18n="greenhouses.title">Управление теплицами</h2>
+                    <button class="btn btn-primary" id="add-greenhouse">
+                        <i class="fas fa-plus"></i>
+                        <span data-i18n="greenhouses.addButton">Добавить теплицу</span>
+                    </button>
+                </div>
+                
+                <div class="greenhouses-list" id="greenhouses-list">
+                    <!-- Теплицы будут загружены динамически -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница погоды -->
+        <section id="weather-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h2 data-i18n="weather.title">Точная погода</h2>
+                </div>
+                
+                <div class="weather-container">
+                    <div class="weather-search">
+                        <input type="text" id="weather-location" placeholder="Введите город" value="Бишкек" class="search-input">
+                        <button class="btn btn-primary" id="search-weather">
+                            <i class="fas fa-search"></i>
+                            <span data-i18n="weather.search">Поиск</span>
+                        </button>
+                    </div>
+                    
+                    <div class="current-weather">
+                        <div class="weather-card">
+                            <div class="weather-main">
+                                <div class="weather-icon">
+                                    <i id="weather-icon" class="fas fa-sun"></i>
+                                </div>
+                                <div class="weather-info">
+                                    <h4 id="weather-city">Бишкек</h4>
+                                    <p class="temperature" id="weather-temp">--°C</p>
+                                    <p id="weather-description">Загрузка...</p>
+                                </div>
+                            </div>
+                            <div class="weather-details">
+                                <div class="weather-detail">
+                                    <i class="fas fa-wind"></i>
+                                    <span data-i18n="weather.wind">Ветер:</span>
+                                    <span id="wind-speed">-- м/с</span>
+                                </div>
+                                <div class="weather-detail">
+                                    <i class="fas fa-tint"></i>
+                                    <span data-i18n="weather.humidity">Влажность:</span>
+                                    <span id="humidity-level">--%</span>
+                                </div>
+                                <div class="weather-detail">
+                                    <i class="fas fa-compress-alt"></i>
+                                    <span data-i18n="weather.pressure">Давление:</span>
+                                    <span id="pressure-level">-- гПа</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="forecast-section">
+                        <h3 data-i18n="weather.forecast">Прогноз на 5 дней</h3>
+                        <div class="forecast-list" id="weather-forecast">
+                            <!-- Прогноз будет загружен динамически -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Страница ИИ-помощника -->
+        <section id="ai-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h2 data-i18n="ai.title">ИИ-Сельскохозяйственный Помощник</h2>
+                </div>
+                
+                <div class="ai-container">
+                    <div class="ai-sidebar">
+                        <div class="ai-info-card">
+                            <div class="ai-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3 data-i18n="ai.subtitle">Ваш умный помощник</h3>
+                            <p data-i18n="ai.description">Задавайте вопросы по сельскому хозяйству, получайте советы по выращиванию культур, уходу за животными и увеличению прибыли.</p>
+                        </div>
+                        
+                        <div class="quick-questions">
+                            <h4 data-i18n="ai.quickQuestions">Быстрые вопросы:</h4>
+                            <div class="question-buttons">
+                                <button class="question-btn" data-question="Когда сажать пшеницу?">
+                                    <i class="fas fa-seedling"></i>
+                                    <span data-i18n="ai.questions.planting">Когда сажать пшеницу?</span>
+                                </button>
+                                <button class="question-btn" data-question="Как ухаживать за коровами?">
+                                    <i class="fas fa-cow"></i>
+                                    <span data-i18n="ai.questions.cows">Как ухаживать за коровами?</span>
+                                </button>
+                                <button class="question-btn" data-question="Как увеличить прибыль?">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span data-i18n="ai.questions.profit">Как увеличить прибыль?</span>
+                                </button>
+                                <button class="question-btn" data-question="Какие удобрения использовать?">
+                                    <i class="fas fa-flask"></i>
+                                    <span data-i18n="ai.questions.fertilizer">Какие удобрения использовать?</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-tools">
+                            <h4 data-i18n="ai.tools">Инструменты</h4>
+                            <div class="tools-grid">
+                                <div class="tool-card" id="calculate-profit">
+                                    <i class="fas fa-calculator"></i>
+                                    <h5 data-i18n="ai.tools.profit">Калькулятор прибыли</h5>
+                                </div>
+                                <div class="tool-card" id="crop-planner">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <h5 data-i18n="ai.tools.planner">Планировщик посевов</h5>
+                                </div>
+                                <div class="tool-card" id="disease-detector">
+                                    <i class="fas fa-bug"></i>
+                                    <h5 data-i18n="ai.tools.disease">Определитель болезней</h5>
+                                </div>
+                                <div class="tool-card" id="market-analysis">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <h5 data-i18n="ai.tools.market">Анализ рынка</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-chat">
+                        <div class="chat-header">
+                            <h3 data-i18n="ai.chat">Чат с ИИ</h3>
+                            <button class="btn btn-small" id="clear-chat">
+                                <i class="fas fa-trash"></i>
+                                <span data-i18n="ai.clear">Очистить</span>
+                            </button>
+                        </div>
+                        
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message ai-message">
+                                <div class="message-avatar">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="message-content">
+                                    <p data-i18n="ai.welcome">Привет! Я ваш сельскохозяйственный помощник. Задавайте вопросы по выращиванию культур, уходу за животными, расчету прибыли и другим темам сельского хозяйства.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input">
+                            <textarea id="ai-question" placeholder="Задайте ваш вопрос..." rows="2" data-i18n="ai.placeholder"></textarea>
+                            <button class="btn btn-primary" id="send-question">
+                                <i class="fas fa-paper-plane"></i>
+                                <span data-i18n="ai.send">Отправить</span>
+                            </button>
+                        </div>
+                        
+                        <div class="chat-info">
+                            <i class="fas fa-info-circle"></i>
+                            <span data-i18n="ai.disclaimer">ИИ предоставляет общие рекомендации. Для точных советов консультируйтесь со специалистами.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-tractor"></i>
+                    <span data-i18n="footer.title">СельхозУчет</span>
+                </div>
+                <p class="footer-copyright" data-i18n="footer.copyright">© 2024 Умная ферма. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальные окна -->
+    <div id="modals-container"></div>
+
+    <!-- Уведомления -->
+    <div id="notifications-container"></div>
+
+    <!-- Загрузка скриптов -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/fields.js"></script>
+    <script src="js/animals.js"></script>
+    <script src="js/greenhouses.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/ai.js"></script>
+    
+    <script>
+        // Инициализация AOS анимаций
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // Загрузка приложения
+        document.addEventListener('DOMContentLoaded', function() {
+            // Инициализация всех модулей
+            if (typeof i18n !== 'undefined') {
+                i18n.init();
+            }
+            if (typeof app !== 'undefined') {
+                app.init();
+            }
+        });
+    </script>
+</body>
+</html>
